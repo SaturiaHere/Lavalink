@@ -1,0 +1,119 @@
+lavalink:
+    jarPaths:
+        - ./plugins/youtube-plugin-1.17.0.jar
+        - ./plugins/lavasrc-plugin-4.8.1.jar
+        - ./plugins/lavasearch-plugin-1.0.0.jar
+    server:
+        bufferDurationMs: 400
+        filters:
+            channelMix: true
+            distortion: true
+            equalizer: true
+            karaoke: true
+            lowPass: true
+            rotation: true
+            timescale: true
+            tremolo: true
+            vibrato: true
+            volume: true
+        frameBufferDurationMs: 100000
+        gc-warnings: true
+        nonAllocatingFrameBuffer: false
+        opusEncodingQuality: 10
+        password: satzzdev
+        playerUpdateInterval: 1
+        resamplingQuality: HIGH
+        soundcloudSearchEnabled: true
+        sources:
+            bandcamp: true
+            http: true
+            local: false
+            nico: true
+            soundcloud: true
+            twitch: true
+            vimeo: true
+            youtube: false
+        timeouts:
+            connectTimeoutMs: 10000
+            connectionRequestTimeoutMs: 10000
+            socketTimeoutMs: 10000
+        trackStuckThresholdMs: 10000
+        useSeekGhosting: true
+        youtubePlaylistLoadLimit: 6
+        youtubeSearchEnabled: false
+logging:
+    file:
+        path: ./logs/
+    level:
+        dev.lavalink.youtube: DEBUG
+        lavalink: INFO
+        root: INFO
+    logback:
+        rollingpolicy:
+            max-file-size: 1GB
+            max-history: 30
+    request:
+        enabled: true
+        includeClientInfo: true
+        includeHeaders: false
+        includePayload: true
+        includeQueryString: true
+        maxPayloadLength: 10000
+metrics:
+    prometheus:
+        enabled: false
+        endpoint: /metrics
+plugins:
+    lavasrc:
+        providers:
+            - ytsearch:"%ISRC%"
+            - ytsearch:%QUERY%
+        sources:
+            applemusic: false
+            deezer: false
+            soundcloud: true
+            spotify: true
+            yandexmusic: false
+        spotify:
+            albumLoadLimit: 6
+            clientId: fcd402f50a4b4e58a284de883ab5af7c
+            clientSecret: 30b02187fd6841c6976db5333e152300
+            countryCode: US
+            customTokenEndpoint: https://lavalink.satzz.online/api/token
+            localFiles: false
+            playlistLoadLimit: 6
+            preferAnonymousToken: false
+            resolveArtistsInSearch: true
+    youtube:
+        allowDirectPlaylistIds: true
+        allowDirectVideoIds: true
+        allowSearch: true
+        clients:
+            - MUSIC
+            - WEB
+            - ANDROID
+        enabled: true
+        oauth:
+            enabled: true
+            refreshToken: 1//0gR7SvZZjdY2NCgYIARAAGBASNwF-L9IriXK5FvZRNxFeyhYdGbnBISNRoc7kcYMhmvEncmYMqm0rSwLiSU1UNtSkJKuesy3l-IE
+        ratelimit: false
+        remoteCipher:
+            url: https://cipher.kikkia.dev/
+            userAgent: hakari_music
+        youtubeConfig:
+            restrictedMode: false
+sentry:
+    dsn: ""
+    environment: ""
+server:
+    address: 0.0.0.0
+    http2:
+        enabled: false
+    port: 2000
+spring:
+    datasource:
+        jdbc-url: jdbc:h2:mem:lavalink_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+        password: ""
+        username: sa
+    main:
+        banner-mode: log
